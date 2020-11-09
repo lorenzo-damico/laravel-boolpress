@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->text('content');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
