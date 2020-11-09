@@ -16,6 +16,11 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+
+            </div>
+
+            <div>
+              <a href="{{ route('admin.articles.index') }}" class="btn btn-success mt-2">I tuoi articoli</a>
             </div>
         </div>
     </div>

@@ -18,9 +18,9 @@
             <td>{{ $article->slug }}</td>
             <td>{{ $article->content }}</td>
             <td>
-              <a href="{{ route("admin.articles.show", $article->slug) }}">Mostra</a>
-              <a href="#">Modifica</a>
-              <a href="#">Cancella</a>
+              <a href="{{ route("admin.articles.show", $article->slug) }}" class="btn btn-primary">Mostra</a>
+              <a href="#" class="btn btn-warning mt-2 mb-2">Modifica</a>
+              <a href="#" class="btn btn-danger">Cancella</a>
             </td>
           </tr>
         @endforeach
