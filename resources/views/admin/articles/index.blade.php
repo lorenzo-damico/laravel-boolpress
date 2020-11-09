@@ -18,7 +18,7 @@
             <td>{{ $article->slug }}</td>
             <td>{{ $article->content }}</td>
             <td>
-              <a href="{{ route("articles.show", $article) }}">Mostra</a>
+              <a href="{{ route("admin.articles.show", $article->slug) }}">Mostra</a>
               <a href="#">Modifica</a>
               <a href="#">Cancella</a>
             </td>

@@ -50,8 +50,10 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($slug)
     {
+        $article = Article::where('slug', $slug)->first();
+        
         return view('admin.articles.show', compact('article'));
     }
 
