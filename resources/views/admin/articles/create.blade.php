@@ -8,18 +8,18 @@
       @method('POST')
       <div class="form-group">
         <label for="title">Titolo</label>
-        <input type="text" class="form-control" id="title" name="title">
+        <input type="text" class="form-control" id="title" name="title" value="{{old("title")}}">
       </div>
       <div class="form-group">
         <label for="slug">Slug</label>
-        <input type="text" class="form-control" id="slug" name="slug">
+        <input type="text" class="form-control" id="slug" name="slug" value="{{old("slug")}}">
       </div>
       <div class="form-group">
         <label for="content">Contenuto</label>
-        <textarea class="form-control" id="content" name="content" rows="8" cols="80"></textarea>
+        <textarea class="form-control" id="content" name="content" rows="8" cols="80">{{old("content")}}</textarea>
       </div>
       <div class="form-group">
-        <label for="image">Immagine</label>
+        <label for="image">Immagine (200x250)</label>
         <input type="file" id="image" name="image" accept="image/*">
       </div>
       <button type="submit" class="btn btn-primary">Aggiungi</button>
