@@ -30,7 +30,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.articles.create');
     }
 
     /**
@@ -41,7 +41,38 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|max:255|unique:articles',
+            'content' => 'required',
+            'image' => 'image'
+        ]);
+
+        $user_id = Auth::id();
+
+        $file_name = $request->file('image')->getClientOriginalName();
+
+        $path = $request->file('image')->storeAs(
+            "images/". $user_id,
+            $file_name,
+            "public"
+        );
+
+        $newArticle = new Article();
+
+        $newArticle->user_id = $user_id;
+        $newArticle->title = $data["title"];
+        $newArticle->slug = $data["slug"];
+        $newArticle->content = $data["content"];
+        $newArticle->image = $path;
+
+        $newArticle->save();
+
+        return redirect()->route('admin.articles.show', $newArticle->slug);
+
+
     }
 
     /**
@@ -53,7 +84,7 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $article = Article::where('slug', $slug)->first();
-        
+
         return view('admin.articles.show', compact('article'));
     }
 

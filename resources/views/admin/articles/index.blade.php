@@ -2,6 +2,7 @@
 
 @section('content')
   <div class="container">
+    <a href="{{ route("admin.articles.create") }}" class="btn btn-success mb-4">Scrivi un nuovo articolo</a>
     <table class="table">
       <thead>
         <tr>

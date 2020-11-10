@@ -12,9 +12,11 @@
               <h3 class="mb-0">{{ $article->title }}</h3>
               <a href="{{ route('articles.show', $article->slug) }}" class="stretched-link btn btn-primary mt-4">Vai all'articolo</a>
             </div>
-            <div class="col-auto d-none d-lg-block">
-              <img src="https://via.placeholder.com/200x250" alt="{{ $article->title }}">
-            </div>
+              @if ($article->image != null)
+                <div class="col-auto d-none d-lg-block">
+                  <img src="{{ asset("storage/". $article->image) }}" alt="{{ $article->title }}">
+                </div>
+              @endif
           </div>
         </div>
       @endforeach
