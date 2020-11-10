@@ -10,10 +10,10 @@
             <div class="col p-4 d-flex flex-column position-static">
               <strong class="d-inline-block mb-2 text-primary">{{ $article->user->name }}</strong>
               <h3 class="mb-0">{{ $article->title }}</h3>
-              <a href="{{ route('articles.show', $article->slug) }}" class="stretched-link btn btn-primary">Vai all'articolo</a>
+              <a href="{{ route('articles.show', $article->slug) }}" class="stretched-link btn btn-primary mt-4">Vai all'articolo</a>
             </div>
             <div class="col-auto d-none d-lg-block">
-              <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <img src="https://via.placeholder.com/200x250" alt="{{ $article->title }}">
             </div>
           </div>
         </div>
