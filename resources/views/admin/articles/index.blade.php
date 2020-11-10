@@ -19,9 +19,15 @@
             <td>{{ $article->slug }}</td>
             <td>{{ $article->content }}</td>
             <td>
-              <a href="{{ route("admin.articles.show", $article->slug) }}" class="btn btn-primary">Mostra</a>
-              <a href="#" class="btn btn-warning mt-2 mb-2">Modifica</a>
-              <a href="#" class="btn btn-danger">Cancella</a>
+              <a href="{{ route("admin.articles.show", $article->slug) }}" class="btn btn-primary btn-block">Mostra</a>
+              <a href="#" class="btn btn-warning mt-2 mb-2 btn-block">Modifica</a>
+
+              <form action="{{ route('admin.articles.destroy', $article->slug) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" name="delete" class="btn btn-danger btn-block">Cancella</button>
+
+              </form>
             </td>
           </tr>
         @endforeach
