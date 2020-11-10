@@ -20,7 +20,7 @@
             <td>{{ $article->content }}</td>
             <td>
               <a href="{{ route("admin.articles.show", $article->slug) }}" class="btn btn-primary btn-block">Mostra</a>
-              <a href="#" class="btn btn-warning mt-2 mb-2 btn-block">Modifica</a>
+              <a href="{{ route("admin.articles.edit", $article->slug) }}" class="btn btn-warning mt-2 mb-2 btn-block">Modifica</a>
 
               <form action="{{ route('admin.articles.destroy', $article->slug) }}" method="POST">
                 @csrf
