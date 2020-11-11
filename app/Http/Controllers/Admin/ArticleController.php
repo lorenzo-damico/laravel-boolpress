@@ -74,7 +74,7 @@ class ArticleController extends Controller
 
           $newArticle->image = $path;
         }
-        
+
         $newArticle->save();
 
         Mail::to($newArticle->user->email)->send(new SendNewMail($newArticle));
@@ -110,6 +110,10 @@ class ArticleController extends Controller
     public function edit($slug)
     {
         $article = Article::where('user_id', Auth::id())->where('slug', $slug)->first();
+
+        if ($article == null) {
+          abort(404);
+        }
 
         return view('admin.articles.edit', compact('article'));
     }
@@ -174,6 +178,10 @@ class ArticleController extends Controller
     public function destroy($slug)
     {
       $article = Article::where('slug', $slug)->first();
+
+      if ($article == null) {
+        abort(404);
+      }
 
       $article->delete();
 
