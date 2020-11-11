@@ -18,6 +18,10 @@ class ArticleController extends Controller
 
       $article = Article::where('slug', $slug)->first();
 
+      if ($article == null) {
+        abort(404);
+      }
+
       return view('guest.articles.show', compact('article'));
     }
 }

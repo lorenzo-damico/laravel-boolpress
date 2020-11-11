@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use App\Mail\SendNewMail;
+use Illuminate\Support\Facades\Mail;
 
 
 class ArticleController extends Controller
@@ -72,8 +74,10 @@ class ArticleController extends Controller
 
           $newArticle->image = $path;
         }
-
+        
         $newArticle->save();
+
+        Mail::to($newArticle->user->email)->send(new SendNewMail($newArticle));
 
         return redirect()->route('admin.articles.show', $newArticle->slug);
 
@@ -88,7 +92,11 @@ class ArticleController extends Controller
      */
     public function show($slug)
     {
-        $article = Article::where('slug', $slug)->first();
+        $article = Article::where('user_id', Auth::id())->where('slug', $slug)->first();
+
+        if ($article == null) {
+          abort(404);
+        }
 
         return view('admin.articles.show', compact('article'));
     }
@@ -101,7 +109,7 @@ class ArticleController extends Controller
      */
     public function edit($slug)
     {
-        $article = Article::where('slug', $slug)->first();
+        $article = Article::where('user_id', Auth::id())->where('slug', $slug)->first();
 
         return view('admin.articles.edit', compact('article'));
     }
