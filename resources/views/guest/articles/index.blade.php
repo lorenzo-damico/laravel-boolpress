@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
+  {{-- <div class="container">
     <h1>Articoli</h1>
     <div class="row mb-2">
       @foreach ($articles as $article)
@@ -21,5 +21,31 @@
         </div>
       @endforeach
     </div>
+  </div> --}}
+
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-md-2">
+
+      @foreach ($articles as $article)
+
+        <div class="col mb-4">
+          <div class="card h-100">
+            @if ($article->image != null)
+              <img src="{{ asset("storage/". $article->image) }}" class="card-img-top" alt="{{ $article->title }}">
+            @endif
+            <div class="card-body">
+              <strong class="card-text">{{ $article->user->name }}</strong>
+              <h5 class="card-title">{{ $article->title }}</h5>
+              <a href="{{ route('articles.show', $article->slug) }}" class="stretched-link btn btn-primary mt-4">Vai all'articolo</a>
+            </div>
+          </div>
+        </div>
+
+      @endforeach
+
+    </div>
+
+
   </div>
 @endsection

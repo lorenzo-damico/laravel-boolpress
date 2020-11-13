@@ -51,7 +51,7 @@ class ArticleController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|max:255|unique:articles',
             'content' => 'required',
-            'image' => 'image|dimensions:width=200,height=250'
+            'image' => 'image'
         ]);
 
         $user_id = Auth::id();

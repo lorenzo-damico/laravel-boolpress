@@ -1,16 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
-    <h1>{{ $article->title }}</h1>
-    @if ($article->image != null)
+
+
+    <div class="container">
       <div>
-        <img src="{{ asset("storage/". $article->image) }}" alt="{{ $article->title }}">
+        @if ($article->image != null)
+          <img src="{{ asset("storage/". $article->image) }}" alt="{{ $article->title }}" class="w-100">
+        @endif
       </div>
-    @endif
-    <div>{{ $article->content }}</div>
-    <div class="col-2 offset-10">
-      <a href="{{ route('articles.index') }}">Torna all'indice</a>
+
+      <h1>{{ $article->title }}</h1>
+      <div>{{ $article->content }}</div>
+      <div class="col-2 offset-10">
+        <a href="{{ route('articles.index') }}">Torna all'indice</a>
+      </div>
     </div>
-  </div>
+
+
 @endsection

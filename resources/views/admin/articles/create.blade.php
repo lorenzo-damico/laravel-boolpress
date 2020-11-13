@@ -19,7 +19,7 @@
         <textarea class="form-control" id="content" name="content" rows="8" cols="80">{{old("content")}}</textarea>
       </div>
       <div class="form-group">
-        <label for="image">Immagine (200x250)</label>
+        <label for="image">Immagine</label>
         <input type="file" id="image" name="image" accept="image/*">
       </div>
       <button type="submit" class="btn btn-primary">Aggiungi</button>
